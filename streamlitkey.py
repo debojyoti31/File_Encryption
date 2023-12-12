@@ -10,33 +10,17 @@ st.write('---')
 
 # Operation type selection
 with st.container():
-    option = st.radio('**Select Operation Type**', ('Generate New Key', 'Encode', 'Decode'))
+    option = st.radio('**Select Operation Type**', ('Encryption', 'Decryption', 'Generate New Key'))
 
-    # Generate New Key section
-    if option == 'Generate New Key':
-        key = None
-        with st.spinner('Generating new key....'):
-            try:
-                key = Fernet.generate_key()
-            except Exception as e:
-                st.write(f'Error: {e}')
-
-        if key is not None:
-            st.download_button(
-                label="Download New Key",
-                data=key,
-                file_name='secret.key'
-            )
-
-    # Encode section
-    if option == 'Encode':
+    # Encryption section
+    if option == 'Encryption':
         enc_file = None
         uploaded_file = st.file_uploader("Upload file Here")
         uploaded_key = st.file_uploader("Upload Key Here")
 
         if uploaded_key is not None and uploaded_file is not None:
-            if st.button('Encode'):
-                with st.spinner('Encoding....'):
+            if st.button('Encrypt'):
+                with st.spinner('Encrypting....'):
                     try:
                         cipher_suite = Fernet(uploaded_key.read())
                         file_content = uploaded_file.read()
@@ -46,20 +30,20 @@ with st.container():
 
         if enc_file is not None:
             st.download_button(
-                label="Download Encoded File",
+                label="Download Encrypted File",
                 data=enc_file,
                 file_name=uploaded_file.name
             )
 
-    # Decode section
-    if option == 'Decode':
+    # Decryption section
+    if option == 'Decryption':
         dec_file = None
         uploaded_file = st.file_uploader("Upload file Here")
         uploaded_key = st.file_uploader("Upload Key Here")
 
         if uploaded_key is not None and uploaded_file is not None:
-            if st.button('Decode'):
-                with st.spinner('Decoding....'):
+            if st.button('Decrypt'):
+                with st.spinner('Decrypting....'):
                     try:
                         cipher_suite = Fernet(uploaded_key.read())
                         file_content = uploaded_file.read()
@@ -69,7 +53,25 @@ with st.container():
 
         if dec_file is not None:
             st.download_button(
-                label="Download Decoded File",
+                label="Download Decrypted File",
                 data=dec_file,
                 file_name=uploaded_file.name
+            )
+
+    # Generate New Key section
+    if option == 'Generate New Key':
+        key_name = st.text_input("Enter Key Name (without extension):", "secret")
+        key = None
+        with st.spinner('Generating new key....'):
+            try:
+                key = Fernet.generate_key()
+            except Exception as e:
+                st.write(f'Error: {e}')
+
+        if key is not None:
+            key_filename = f"{key_name}.key"
+            st.download_button(
+                label=f"Download New Key ({key_filename})",
+                data=key,
+                file_name=key_filename
             )
