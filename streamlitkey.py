@@ -20,8 +20,6 @@ with how_to_use_expander:
     st.write("2. For Encryption and Decryption, ensure that the key matches the operation.")
     st.write("3. Download the result after the operation is complete.")
 
-    st.write("Feel free to reach out if you encounter any issues or have questions!")
-
 st.write('---')
 
 # Operation type selection
