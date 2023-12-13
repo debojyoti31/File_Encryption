@@ -8,6 +8,21 @@ st.set_page_config(page_title="Encryption", page_icon=":shushing_face:")
 st.title('Simple File Encryption WebApp')
 st.write('---')
 
+# How to Use section
+how_to_use_expander = st.expander("How to Use", expanded=False)
+with how_to_use_expander:
+    st.write("This simple File Encryption WebApp allows you to perform three operations:")
+    st.write("1. **Encryption**: Upload a file and a key, and click 'Encrypt' to generate an encrypted file.")
+    st.write("2. **Decryption**: Upload an encrypted file and its corresponding key, and click 'Decrypt' to get the original file.")
+    st.write("3. **Generate New Key**: Enter a key name and click 'Generate New Key' to create a new encryption key.")
+
+    st.write("Make sure to follow these steps:")
+    st.write("1. Upload the correct files for the chosen operation.")
+    st.write("2. For Encryption and Decryption, ensure that the key matches the operation.")
+    st.write("3. Download the result after the operation is complete.")
+
+    st.write("Feel free to reach out if you encounter any issues or have questions!")
+    
 # Operation type selection
 with st.container():
     option = st.radio('**Select Operation Type**', ('Encryption', 'Decryption', 'Generate New Key'))
