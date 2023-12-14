@@ -36,7 +36,7 @@ with st.container():
             file_content = uploaded_file.read() if uploaded_file is not None else None
 
         elif upload_option == 'Write Text':
-            file_content = st.text_area("Enter Text Here")
+            file_content = st.text_area("Enter Text Here").encode()
 
         uploaded_key = st.file_uploader("Upload Key Here")
 
@@ -58,7 +58,7 @@ with st.container():
                 )
             elif upload_option == 'Write Text':
                 st.write("Encrypted Text:")
-                st.text(enc_file)
+                st.text(enc_file.decode())
 
     # Decryption section
     if option == 'Decryption':
@@ -70,7 +70,7 @@ with st.container():
             file_content = uploaded_file.read() if uploaded_file is not None else None
 
         elif upload_option == 'Write Text':
-            file_content = st.text_area("Enter Text Here")
+            file_content = st.text_area("Enter Text Here").encode()
 
         uploaded_key = st.file_uploader("Upload Key Here")
 
@@ -92,7 +92,7 @@ with st.container():
                 )
             elif upload_option == 'Write Text':
                 st.write("Decrypted Text:")
-                st.text(dec_file)
+                st.text(dec_file.decode())
 
     # Generate New Key section
     if option == 'Generate New Key':
