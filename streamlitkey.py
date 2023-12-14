@@ -25,7 +25,7 @@ st.write('---')
 
 # Operation type selection
 with st.container():
-    option = st.radio(':red[Select Operation Type]', ('Encryption', 'Decryption', 'Generate New Key'))
+    option = st.radio(':rainbow[Select Operation Type]', ('Encryption', 'Decryption', 'Generate New Key'))
 
     # Encryption section
     if option == 'Encryption':
