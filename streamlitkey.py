@@ -30,13 +30,20 @@ with st.container():
     if option == 'Encryption':
         enc_file = None
         uploaded_file = st.file_uploader("Upload file Here")
-        uploaded_key = st.file_uploader("Upload Key Here")
+        use_uploaded_key = st.checkbox("Use Uploaded Key", value=True)
+        uploaded_key = st.file_uploader("Upload Key Here", key="encryption_key", disabled=use_uploaded_key)
 
-        if uploaded_key is not None and uploaded_file is not None:
+        if not use_uploaded_key:
+            entered_key = st.text_input("Enter Key:", type="password")
+
+        if (uploaded_key is not None and uploaded_file is not None) or (entered_key and uploaded_file is not None):
             if st.button('Encrypt'):
                 with st.spinner('Encrypting....'):
                     try:
-                        cipher_suite = Fernet(uploaded_key.read())
+                        if use_uploaded_key:
+                            cipher_suite = Fernet(uploaded_key.read())
+                        else:
+                            cipher_suite = Fernet(entered_key.encode())
                         file_content = uploaded_file.read()
                         enc_file = cipher_suite.encrypt(file_content)
                     except Exception as e:
@@ -53,13 +60,20 @@ with st.container():
     if option == 'Decryption':
         dec_file = None
         uploaded_file = st.file_uploader("Upload file Here")
-        uploaded_key = st.file_uploader("Upload Key Here")
+        use_uploaded_key = st.checkbox("Use Uploaded Key", value=True)
+        uploaded_key = st.file_uploader("Upload Key Here", key="decryption_key", disabled=use_uploaded_key)
 
-        if uploaded_key is not None and uploaded_file is not None:
+        if not use_uploaded_key:
+            entered_key = st.text_input("Enter Key:", type="password")
+
+        if (uploaded_key is not None and uploaded_file is not None) or (entered_key and uploaded_file is not None):
             if st.button('Decrypt'):
                 with st.spinner('Decrypting....'):
                     try:
-                        cipher_suite = Fernet(uploaded_key.read())
+                        if use_uploaded_key:
+                            cipher_suite = Fernet(uploaded_key.read())
+                        else:
+                            cipher_suite = Fernet(entered_key.encode())
                         file_content = uploaded_file.read()
                         dec_file = cipher_suite.decrypt(file_content)
                     except Exception as e:
