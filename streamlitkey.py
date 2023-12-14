@@ -29,6 +29,9 @@ with st.container():
     # Encryption section
     if option == 'Encryption':
         enc_file = None
+
+        uploaded_key = st.file_uploader("Upload Key Here")
+        
         upload_option = st.radio("Select input type:", ('Upload File', 'Write Text'))
 
         if upload_option == 'Upload File':
@@ -36,9 +39,7 @@ with st.container():
             file_content = uploaded_file.read() if uploaded_file is not None else None
 
         elif upload_option == 'Write Text':
-            file_content = st.text_area("Enter Text Here").encode()
-
-        uploaded_key = st.file_uploader("Upload Key Here")
+            file_content = st.text_area("Enter Text Here").encode()        
 
         if uploaded_key is not None and file_content is not None:
             if st.button('Encrypt'):
@@ -63,6 +64,9 @@ with st.container():
     # Decryption section
     if option == 'Decryption':
         dec_file = None
+
+        uploaded_key = st.file_uploader("Upload Key Here")
+        
         upload_option = st.radio("Select input type:", ('Upload File', 'Write Text'))
 
         if upload_option == 'Upload File':
@@ -71,8 +75,6 @@ with st.container():
 
         elif upload_option == 'Write Text':
             file_content = st.text_area("Enter Text Here").encode()
-
-        uploaded_key = st.file_uploader("Upload Key Here")
 
         if uploaded_key is not None and file_content is not None:
             if st.button('Decrypt'):
