@@ -121,5 +121,7 @@ with st.container():
                 data=key,
                 file_name=key_filename
             )
+            # Display the key in a text area for copying
+            st.text_area("Copy this key:", value=key, height=100, key="copy_key_text_area", disabled=True)
 
 st.write('---')
