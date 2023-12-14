@@ -5,7 +5,7 @@ from cryptography.fernet import Fernet
 st.set_page_config(page_title="Encryption", page_icon=":shushing_face:")
 
 # Main title
-st.title('Simple File Encryption WebApp')
+st.title('Simple File/Text Encryption WebApp')
 
 # How to Use section
 how_to_use_expander = st.expander("How to Use", expanded=False)
