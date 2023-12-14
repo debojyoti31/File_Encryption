@@ -30,33 +30,17 @@ with st.container():
     if option == 'Encryption':
         enc_file = None
         uploaded_file = st.file_uploader("Upload file Here")
-        key_option = st.radio("Select Key Option", ('Upload Key', 'Type Key'))
+        uploaded_key = st.file_uploader("Upload Key Here")
 
-        if key_option == 'Upload Key':
-            uploaded_key = st.file_uploader("Upload Key Here", key="encryption_key")
-
-            if uploaded_key is not None and uploaded_file is not None:
-                if st.button('Encrypt'):
-                    with st.spinner('Encrypting....'):
-                        try:
-                            cipher_suite = Fernet(uploaded_key.read())
-                            file_content = uploaded_file.read()
-                            enc_file = cipher_suite.encrypt(file_content)
-                        except Exception as e:
-                            st.write(f'Error: {e}')
-
-        elif key_option == 'Type Key':
-            entered_key = st.text_input("Enter Key:", type="password")
-
-            if entered_key and uploaded_file is not None:
-                if st.button('Encrypt'):
-                    with st.spinner('Encrypting....'):
-                        try:
-                            cipher_suite = Fernet(entered_key.encode())
-                            file_content = uploaded_file.read()
-                            enc_file = cipher_suite.encrypt(file_content)
-                        except Exception as e:
-                            st.write(f'Error: {e}')
+        if uploaded_key is not None and uploaded_file is not None:
+            if st.button('Encrypt'):
+                with st.spinner('Encrypting....'):
+                    try:
+                        cipher_suite = Fernet(uploaded_key.read())
+                        file_content = uploaded_file.read()
+                        enc_file = cipher_suite.encrypt(file_content)
+                    except Exception as e:
+                        st.write(f'Error: {e}')
 
         if enc_file is not None:
             st.download_button(
@@ -69,33 +53,17 @@ with st.container():
     if option == 'Decryption':
         dec_file = None
         uploaded_file = st.file_uploader("Upload file Here")
-        key_option = st.radio("Select Key Option", ('Upload Key', 'Type Key'))
+        uploaded_key = st.file_uploader("Upload Key Here")
 
-        if key_option == 'Upload Key':
-            uploaded_key = st.file_uploader("Upload Key Here", key="decryption_key")
-
-            if uploaded_key is not None and uploaded_file is not None:
-                if st.button('Decrypt'):
-                    with st.spinner('Decrypting....'):
-                        try:
-                            cipher_suite = Fernet(uploaded_key.read())
-                            file_content = uploaded_file.read()
-                            dec_file = cipher_suite.decrypt(file_content)
-                        except Exception as e:
-                            st.write(f'Error: {e}')
-
-        elif key_option == 'Type Key':
-            entered_key = st.text_input("Enter Key:", type="password")
-
-            if entered_key and uploaded_file is not None:
-                if st.button('Decrypt'):
-                    with st.spinner('Decrypting....'):
-                        try:
-                            cipher_suite = Fernet(entered_key.encode())
-                            file_content = uploaded_file.read()
-                            dec_file = cipher_suite.decrypt(file_content)
-                        except Exception as e:
-                            st.write(f'Error: {e}')
+        if uploaded_key is not None and uploaded_file is not None:
+            if st.button('Decrypt'):
+                with st.spinner('Decrypting....'):
+                    try:
+                        cipher_suite = Fernet(uploaded_key.read())
+                        file_content = uploaded_file.read()
+                        dec_file = cipher_suite.decrypt(file_content)
+                    except Exception as e:
+                        st.write(f'Error: {e}')
 
         if dec_file is not None:
             st.download_button(
@@ -121,10 +89,5 @@ with st.container():
                 data=key,
                 file_name=key_filename
             )
-
-            # Display the obscured key with a copy button
-            copy_button = st.button("Copy Key")
-            if copy_button:
-                st.text_input("Copy this key:", value=key, key="copy_key_text_input", disabled=True)
 
 st.write('---')
