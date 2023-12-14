@@ -121,7 +121,27 @@ with st.container():
                 data=key,
                 file_name=key_filename
             )
-            # Display the key in a text area for copying
-            st.text_area("Copy this key:", value=key, height=100, key="copy_key_text_area", disabled=True)
+
+            # Display the obscured key with a copy button
+            st.markdown(
+                f'<input id="copyKeyButton" type="button" value="Copy Key" onclick="copyKey()" />'
+                f'<input id="keyInput" type="text" value="{len(key)*"*"}" readonly style="width: 80%;" />',
+                unsafe_allow_html=True
+            )
+
+            # JavaScript snippet for copying the key
+            st.markdown(
+                """
+                <script>
+                function copyKey() {
+                    var keyInput = document.getElementById('keyInput');
+                    keyInput.select();
+                    document.execCommand('copy');
+                    alert('Key copied to clipboard!');
+                }
+                </script>
+                """,
+                unsafe_allow_html=True
+            )
 
 st.write('---')
