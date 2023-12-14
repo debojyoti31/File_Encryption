@@ -29,6 +29,7 @@ with st.container():
     # Encryption section
     if option == 'Encryption':
         enc_file = None
+        entered_key = None
         uploaded_file = st.file_uploader("Upload file Here")
         use_uploaded_key = st.checkbox("Use Uploaded Key", value=True)
         uploaded_key = st.file_uploader("Upload Key Here", key="encryption_key", disabled=use_uploaded_key)
@@ -59,6 +60,7 @@ with st.container():
     # Decryption section
     if option == 'Decryption':
         dec_file = None
+        entered_key = None
         uploaded_file = st.file_uploader("Upload file Here")
         use_uploaded_key = st.checkbox("Use Uploaded Key", value=True)
         uploaded_key = st.file_uploader("Upload Key Here", key="decryption_key", disabled=use_uploaded_key)
