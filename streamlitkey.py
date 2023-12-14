@@ -2,7 +2,7 @@ import streamlit as st
 from cryptography.fernet import Fernet
 
 # Set page configuration
-st.set_page_config(page_title="Encryption", page_icon=":shushing_face:")
+st.set_page_config(page_title="Encryption", page_icon=":shark:")
 
 # Main title
 st.title('Simple File/Text Encryption WebApp')
@@ -11,8 +11,8 @@ st.title('Simple File/Text Encryption WebApp')
 how_to_use_expander = st.expander("How to Use", expanded=False)
 with how_to_use_expander:
     st.write("This simple File Encryption WebApp allows you to perform three operations:")
-    st.write("1. **Encryption**: Upload a file or write text, and a key. Click 'Encrypt' to generate an encrypted file.")
-    st.write("2. **Decryption**: Upload an encrypted file or write text, and its corresponding key. Click 'Decrypt' to get the original file.")
+    st.write("1. **Encryption**: Upload a file or write text, and a key. Click 'Encrypt' to generate an encrypted file or text.")
+    st.write("2. **Decryption**: Upload an encrypted file or write text, and its corresponding key. Click 'Decrypt' to get the original file or text.")
     st.write("3. **Generate New Key**: Enter a key name and click 'Generate New Key' to create a new encryption key.")
 
     st.write("Make sure to follow these steps:")
