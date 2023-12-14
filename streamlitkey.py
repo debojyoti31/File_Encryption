@@ -1,6 +1,5 @@
 import streamlit as st
 from cryptography.fernet import Fernet
-import pyperclip
 
 # Set page configuration
 st.set_page_config(page_title="Encryption", page_icon=":shushing_face:")
@@ -122,10 +121,5 @@ with st.container():
                 data=key,
                 file_name=key_filename
             )
-
-            # Copy New Key button
-            if st.button("Copy New Key"):
-                pyperclip.copy(key)
-                st.success("New key copied to clipboard!")
 
 st.write('---')
