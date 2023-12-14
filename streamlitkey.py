@@ -10,7 +10,7 @@ st.title('Simple File/Text Encryption WebApp')
 # How to Use section
 how_to_use_expander = st.expander("README", expanded=False)
 with how_to_use_expander:
-    st.write("This simple File Encryption WebApp uses the [Fernet symmetric encryption algorithm](https://cryptography.io/en/latest/fernet/),")
+    st.write("This simple File Encryption WebApp uses the [Fernet symmetric encryption algorithm](https://github.com/pyca/cryptography/blob/main/src/cryptography/fernet.py),")
     st.write("to perform three operations:")
     st.write("1. **Encryption**: Upload a file or write text, and a key. Click 'Encrypt' to generate an encrypted file or text.")
     st.write("2. **Decryption**: Upload an encrypted file or write text, and its corresponding key. Click 'Decrypt' to get the original file or text.")
