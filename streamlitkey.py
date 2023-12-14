@@ -2,7 +2,7 @@ import streamlit as st
 from cryptography.fernet import Fernet
 
 # Set page configuration
-st.set_page_config(page_title="Encryption", page_icon=":shark:")
+st.set_page_config(page_title="Encryption", page_icon=":shushing_face:")
 
 # Main title
 st.title('Simple File/Text Encryption WebApp')
