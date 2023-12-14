@@ -123,25 +123,8 @@ with st.container():
             )
 
             # Display the obscured key with a copy button
-            st.markdown(
-                f'<input id="copyKeyButton" type="button" value="Copy Key" onclick="copyKey()" />'
-                f'<input id="keyInput" type="text" value="{len(key)*"*"}" readonly style="width: 80%;" />',
-                unsafe_allow_html=True
-            )
-
-            # JavaScript snippet for copying the key
-            st.markdown(
-                """
-                <script>
-                function copyKey() {
-                    var keyInput = document.getElementById('keyInput');
-                    keyInput.select();
-                    document.execCommand('copy');
-                    alert('Key copied to clipboard!');
-                }
-                </script>
-                """,
-                unsafe_allow_html=True
-            )
+            copy_button = st.button("Copy Key")
+            if copy_button:
+                st.text_input("Copy this key:", value=key, key="copy_key_text_input", disabled=True)
 
 st.write('---')
