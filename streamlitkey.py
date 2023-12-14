@@ -58,7 +58,7 @@ with st.container():
                 )
             elif upload_option == 'Write Text':
                 st.write("Encrypted Text:")
-                st.text(enc_file.decode())
+                st.text(enc_file.decode(), wrap=True)
 
     # Decryption section
     if option == 'Decryption':
@@ -92,7 +92,7 @@ with st.container():
                 )
             elif upload_option == 'Write Text':
                 st.write("Decrypted Text:")
-                st.text(dec_file.decode())
+                st.text(dec_file.decode(), wrap=True)
 
     # Generate New Key section
     if option == 'Generate New Key':
