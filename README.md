@@ -13,7 +13,7 @@ This Streamlit web application allows users to perform file encryption, decrypti
 1. Visit the web application at [https://debojyoti31-fileencryption.streamlit.app/](https://debojyoti31-fileencryption.streamlit.app/).
 2. Select the operation type: Encryption, Decryption, or Generate New Key.
 3. Follow the instructions for each operation type.
-4. Download the encrypted/decrypted file or the newly generated key.
+4. Download/copy the encrypted/decrypted file/text or the newly generated key.
 
 ## Security Considerations
 
