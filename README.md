@@ -4,8 +4,8 @@ This Streamlit web application allows users to perform file encryption, decrypti
 
 ## Features
 
-- **Encryption:** Upload a file and a key to encrypt the file.
-- **Decryption:** Upload an encrypted file and the corresponding key to decrypt the file.
+- **Encryption:** Upload a file or write a text, and upload a key to encrypt the file or text.
+- **Decryption:** Upload an encrypted file or paste a encrypted text and upload the corresponding key to decrypt the file or text.
 - **Generate New Key:** Generate a new encryption key and download it for future use.
 
 ## Usage
